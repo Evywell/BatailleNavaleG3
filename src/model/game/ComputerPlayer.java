@@ -6,4 +6,8 @@ public class ComputerPlayer extends Player {
         super(pseudo);
     }
 
+    public void choixOrdinateur() {
+
+    }
+
 }
