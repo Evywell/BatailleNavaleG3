@@ -13,13 +13,13 @@ public class Field {
         this.height = height;
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                this.boardPieces[x][y] = new WaterPiece();
+                this.boardPieces[x][y] = new WaterPiece(x, y, null);
             }
         }
     }
 
     public Piece hit(int x, int y) {
-        return new WaterPiece();
+        return new WaterPiece(x, y, null);
     }
 
     public void build(int x, int y, Piece piece) {

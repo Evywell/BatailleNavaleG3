@@ -28,10 +28,6 @@ public class Statistiques {
         this.scores = new ArrayList<>();
         this.initialize();
         this.sortScores();
-        this.scores.forEach(score -> {
-            System.out.println(score.getScore());
-        });
-        System.out.println();
     }
 
     /**

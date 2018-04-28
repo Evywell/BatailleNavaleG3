@@ -5,6 +5,8 @@ import model.game.HumanPlayer;
 import model.game.Party;
 import model.game.Player;
 import model.stats.Statistiques;
+import view.BattleField;
+import view.Window;
 
 public class Game {
 
@@ -13,6 +15,10 @@ public class Game {
     public static int DIFFICULTE_DIFFICILE = 2;
 
     public static void main(String[] args) {
+        Window w = new BattleField(30, 20);
+
+        w.showWindow();
+
         new Statistiques();
         Player playerOne = new HumanPlayer("Evywell");
         Player playerTwo = new ComputerPlayer("Computer");
