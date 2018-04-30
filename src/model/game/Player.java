@@ -21,7 +21,11 @@ public abstract class Player {
     }
 
     public void createField (int width, int height) {
+        // On créer le champs de bataille avec de l'eau
         this.field = new Field(width, height);
+        this.ships.forEach(ship -> {
+
+        });
     }
 
     public Player getOpponent() {

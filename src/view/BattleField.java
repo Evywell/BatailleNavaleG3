@@ -1,6 +1,7 @@
 package view;
 
 import model.game.ComputerPlayer;
+import model.game.Field;
 import model.game.Piece;
 import view.textures.Texture;
 
@@ -13,37 +14,42 @@ public class BattleField extends Window {
 
     private int width;
     private int height;
-    private Piece[][] playerField;
-    private Piece[][] computerField;
+    private Field playerField;
+    private Field computerField;
+    private controller.BattleField controller;
 
     /**
      * Créer un champ de bataille
      * @param width le nombre de case en longueur
      * @param height le nombre de case en hauteur
      */
-    public BattleField(int width, int height, Piece[][] playerField, Piece[][] computerField) {
+    public BattleField(int width, int height, Field playerField, Field computerField, controller.BattleField controller) {
         super("BattleField");
         this.width = width;
         this.height = height;
         this.playerField = playerField;
         this.computerField = computerField;
+        this.controller = controller;
         this.drawFields();
     }
 
     private void drawPlayerField(JPanel panel) {
+        Piece[][] board = this.playerField.getPieces();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                Texture texture = this.playerField[x][y].getTexture();
+                Texture texture = board[x][y].getTexture();
                 panel.add(texture);
             }
         }
     }
 
     private void drawComputerField(JPanel panel) {
+        Piece[][] board = this.computerField.getPieces();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                Texture texture = this.computerField[x][y].getTexture();
+                Texture texture = board[x][y].getTexture();
                 panel.add(texture);
+                texture.addMouseListener(new PieceMouseListener(this.controller));
             }
         }
     }
@@ -60,6 +66,41 @@ public class BattleField extends Window {
         this.getContentPane().add(computerPan);
         this.drawPlayerField(playerPan);
         this.drawComputerField(computerPan);
+    }
+
+    private class PieceMouseListener implements MouseListener {
+
+        private controller.BattleField controller;
+
+        public PieceMouseListener (controller.BattleField controller) {
+            this.controller = controller;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            this.controller.test();
+            System.out.println("CLICKED");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 
 }
