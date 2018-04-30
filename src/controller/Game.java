@@ -35,7 +35,7 @@ public class Game {
         Party party = new Party(playerOne, playerTwo, DIFFICULTE_FACILE);
         party.setCurrentPlayer(playerOne);
 
-        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerOne.getField(), playerTwo.getField());
+        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerOne.getField(), playerTwo.getField(), new controller.BattleField());
         battleField.showWindow();
     }
 
