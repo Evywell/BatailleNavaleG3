@@ -20,6 +20,10 @@ public abstract class Player {
         return this.opponent.getField().hit(x, y);
     }
 
+    public void createField (int width, int height) {
+        this.field = new Field(width, height);
+    }
+
     public Player getOpponent() {
         return this.opponent;
     }

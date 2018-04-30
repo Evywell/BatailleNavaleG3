@@ -9,6 +9,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +32,66 @@ public class Statistiques {
         this.initialize();
         this.sortScores();
     }
+
+    /**
+     * Ajoute un score
+     */
+    public void addScore(Score score) {
+        this.lastScore = score;
+        this.scores.add(score);
+    }
+
+
+    /**
+     * Enregistre dans le fichier stats.xml les scores
+     */
+    public void persistScores() {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document xml = builder.newDocument();
+
+            // Elément racine
+            Element root = xml.createElement("stats");
+
+            // Last score
+            Element lastScore = xml.createElement("lastScore");
+            lastScore.setAttribute("pseudo", this.lastScore.getPseudo());
+            lastScore.setAttribute("temps", this.lastScore.getTemps());
+            lastScore.setAttribute("difficulte", this.lastScore.getDifficulte());
+            lastScore.setAttribute("score", String.valueOf(this.lastScore.getScore()));
+
+            // Les scores
+            // On classe les scores
+            this.sortScores();
+            Element scores = xml.createElement("scores");
+            this.scores.forEach(score -> {
+                Element scoreElement = xml.createElement("score");
+                scoreElement.setAttribute("pseudo", score.getPseudo());
+                scoreElement.setAttribute("temps", score.getTemps());
+                scoreElement.setAttribute("difficulte", score.getDifficulte());
+                scoreElement.setAttribute("score", String.valueOf(score.getScore()));
+                scores.appendChild(scoreElement);
+            });
+
+            // On ajoute tout à l'élément racine
+            root.appendChild(scores);
+            root.appendChild(lastScore);
+
+            Transformer t = TransformerFactory.newInstance().newTransformer();
+            t.setOutputProperty(OutputKeys.INDENT, "yes");
+            StreamResult XML = new StreamResult(FILENAME);
+
+            t.transform(new DOMSource(root), XML);
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Méthode d'initialisation des statistiques
@@ -79,7 +142,8 @@ public class Statistiques {
      * Récupère les 5 meilleurs scores
      * @return La liste des scores
      */
-    private List<Score> getHighScores() {
+    public List<Score> getHighScores() {
+        this.sortScores();
         return this.scores;
     }
 
@@ -87,15 +151,8 @@ public class Statistiques {
      * Récupère le dernier score enregistré
      * @return Score
      */
-    private Score getLastScore() {
+    public Score getLastScore() {
         return this.lastScore;
-    }
-
-    /**
-     * Enregistre dans le fichier stats.xml les scores
-     */
-    private void persistScores() {
-
     }
 
     /**

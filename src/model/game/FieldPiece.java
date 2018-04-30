@@ -22,4 +22,12 @@ public abstract class FieldPiece implements Piece {
         return this.texture;
     }
 
+    public void setTexture (Texture texture) {
+        this.texture = texture;
+    }
+
+    public int getX() { return this.x; }
+
+    public int getY() { return this.y; }
+
 }

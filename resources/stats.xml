@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<stats>
-  <scores>
-    <score pseudo="Evywell" temps="03:50" difficulte="difficile" score="3000"/>
-    <score pseudo="Evywell" temps="03:50" difficulte="difficile" score="2500"/>
-    <score pseudo="Evywell" temps="03:50" difficulte="difficile" score="5500"/>
-  </scores>
-  <lastScore pseudo="Evywell" temps="03:50" difficulte="difficile" score="3000"/>
+<?xml version="1.0" encoding="UTF-8"?><stats>
+<scores>
+<score difficulte="difficile" pseudo="Evywell" score="5500" temps="03:50"/>
+<score difficulte="difficile" pseudo="Evywell" score="3000" temps="03:50"/>
+<score difficulte="difficile" pseudo="Evywell" score="2500" temps="03:50"/>
+<score difficulte="difficile" pseudo="Test Persist" score="800" temps="20:00"/>
+</scores>
+<lastScore difficulte="difficile" pseudo="Test Persist" score="800" temps="20:00"/>
 </stats>

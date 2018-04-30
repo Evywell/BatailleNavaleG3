@@ -1,6 +1,7 @@
 package controller;
 
 import model.game.*;
+import model.stats.Score;
 import model.stats.Statistiques;
 import view.BattleField;
 import view.Window;
@@ -13,19 +14,29 @@ public class Game {
     public static int DIFFICULTE_DIFFICILE = 2;
     public static int WIDTH_FIELD_FACILE = 20;
     public static int HEIGHT_FIELD_FACILE = 20;
+    public static int WIDTH_FIELD_NORMALE = 20;
+    public static int HEIGHT_FIELD_NORMALE = 20;
+    public static int WIDTH_FIELD_DIFFICILE = 20;
+    public static int HEIGHT_FIELD_DIFFICILE = 20;
 
     public static void main(String[] args) {
-        Field playerField = new Field(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE);
-        Field computerField = new Field(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE);
+        Statistiques stats = new Statistiques();
+/**
+        Score score = new Score(800);
+        score.setPseudo("Test Persist");
+        score.setTemps("20:00");
+        score.setDifficulte("difficile");
 
-        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerField.getPieces(), computerField.getPieces());
-        battleField.showWindow();
-
-        new Statistiques();
+        stats.addScore(score);
+        stats.persistScores();
+**/
         Player playerOne = new HumanPlayer("Evywell");
         Player playerTwo = new ComputerPlayer("Computer");
-        Party party = new Party(playerOne, playerTwo, DIFFICULTE_NORMALE);
+        Party party = new Party(playerOne, playerTwo, DIFFICULTE_FACILE);
         party.setCurrentPlayer(playerOne);
+
+        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerOne.getField().getPieces(), playerTwo.getField().getPieces());
+        battleField.showWindow();
     }
 
 }

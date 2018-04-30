@@ -26,4 +26,16 @@ public class Ship {
 
     }
 
+    public int getWidth () {
+        return this.width;
+    }
+
+    public int getHeight () {
+        return this.height;
+    }
+
+    public List<Piece> getPieces () {
+        return this.pieces;
+    }
+
 }
