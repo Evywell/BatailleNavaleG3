@@ -1,9 +1,11 @@
 package model.game;
 
+import view.textures.Texture;
+
 public class WaterPiece extends FieldPiece {
 
-    public WaterPiece(int x, int y, Ship parent) {
-        super(x, y, parent);
+    public WaterPiece(int x, int y, Texture texture, Ship parent) {
+        super(x, y, texture, parent);
     }
 
     @Override
@@ -15,4 +17,5 @@ public class WaterPiece extends FieldPiece {
     public void handler() {
 
     }
+
 }

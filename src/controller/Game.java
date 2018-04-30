@@ -1,23 +1,25 @@
 package controller;
 
-import model.game.ComputerPlayer;
-import model.game.HumanPlayer;
-import model.game.Party;
-import model.game.Player;
+import model.game.*;
 import model.stats.Statistiques;
 import view.BattleField;
 import view.Window;
 
 public class Game {
 
+    public static String ASSETS_PATH = "resources/assets";
     public static int DIFFICULTE_FACILE = 0;
     public static int DIFFICULTE_NORMALE = 1;
     public static int DIFFICULTE_DIFFICILE = 2;
+    public static int WIDTH_FIELD_FACILE = 20;
+    public static int HEIGHT_FIELD_FACILE = 20;
 
     public static void main(String[] args) {
-        Window w = new BattleField(30, 20);
+        Field playerField = new Field(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE);
+        Field computerField = new Field(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE);
 
-        w.showWindow();
+        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerField.getPieces(), computerField.getPieces());
+        battleField.showWindow();
 
         new Statistiques();
         Player playerOne = new HumanPlayer("Evywell");
