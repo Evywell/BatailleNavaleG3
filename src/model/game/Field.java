@@ -1,6 +1,7 @@
 package model.game;
 
 import controller.Game;
+import model.game.ship.Ship;
 import view.textures.Texture;
 
 public class Field {

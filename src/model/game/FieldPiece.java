@@ -1,5 +1,6 @@
 package model.game;
 
+import model.game.ship.Ship;
 import view.textures.Texture;
 
 public abstract class FieldPiece implements Piece {

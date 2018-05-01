@@ -20,7 +20,7 @@ public class Texture extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(this.image, 0, 0, null);
+        g.drawImage(this.image, 0, 0, 40, 40, 0, 0, 88, 88, null);
     }
 
 }

@@ -1,5 +1,6 @@
-package model.game;
+package model.game.ship;
 
+import model.game.FieldPiece;
 import view.textures.Texture;
 
 public class ShipPiece extends FieldPiece {
