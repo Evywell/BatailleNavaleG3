@@ -9,13 +9,21 @@ import java.util.Arrays;
 
 public class BigShip extends Ship {
 
-    public BigShip(Player player) {
+    public BigShip(Player player, int orientation) {
         super(player, 3, 1);
-        this.pieces = new ArrayList<>(Arrays.asList(new ShipPiece[]{
-                new ShipPiece(0, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
-                new ShipPiece(1, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
-                new ShipPiece(2, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this)
-        }));
+        if (orientation == Ship.VERTICALE) {
+            this.pieces = new ArrayList<>(Arrays.asList(new ShipPiece[]{
+                    new ShipPiece(0, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
+                    new ShipPiece(1, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
+                    new ShipPiece(2, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this)
+            }));
+        } else if (orientation == Ship.HORIZONTALE) {
+            this.pieces = new ArrayList<>(Arrays.asList(new ShipPiece[]{
+                    new ShipPiece(0, 0, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
+                    new ShipPiece(0, 1, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this),
+                    new ShipPiece(0, 2, new Texture(Game.ASSETS_PATH + "/texture.jpg"), this)
+            }));
+        }
     }
 
 }

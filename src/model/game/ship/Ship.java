@@ -16,6 +16,9 @@ public class Ship {
 
     protected List<Piece> pieces;
 
+    public final static int HORIZONTALE = 0;
+    public final static int VERTICALE = 1;
+
     public Ship(Player player, int width, int height) {
         this.player = player;
         this.width = width;
