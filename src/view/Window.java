@@ -9,6 +9,7 @@ public class Window extends JFrame {
     private String title;
 
     public Window(int width, int height, String title) {
+        super();
         this.width = width;
         this.height = height;
         this.title = title;
