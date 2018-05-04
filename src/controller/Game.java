@@ -4,6 +4,7 @@ import model.game.*;
 import model.stats.Score;
 import model.stats.Statistiques;
 import view.BattleField;
+import view.ChoixDifficulte;
 import view.MainMenu;
 import view.Window;
 
@@ -40,7 +41,14 @@ public class Game {
         battleField.showWindow();
     }*/
 
+       /*
         Window MainMenu = new MainMenu();
         MainMenu.showWindow();
+        */
+
+
+        Window ChoixDifficulte = new ChoixDifficulte();
+        ChoixDifficulte.showWindow();
+
     }
 }

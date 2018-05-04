@@ -13,24 +13,32 @@ public class ChoixDifficulte extends Window {
     public ChoixDifficulte() {
         super("Choix difficulté");
 
-        /*
         this.setLayout(new BorderLayout());
         JPanel menu = new JPanel();
         JPanel imageFond = new ImagePanel();
 
         menu.setLayout(new BorderLayout());
-        menu.setPreferredSize(new Dimension(90, 90));
+        menu.setPreferredSize(new Dimension(120, 120));
 
-        JButton buttonJouer = new JButton("Jouer");
-        JButton buttonScore = new JButton("Mes scores");
-        JButton buttonQuitter = new JButton("Quitter");
+        JTextField pseudo = new JTextField(15);
+        pseudo.setPreferredSize(new Dimension(30,30));
 
-        buttonJouer.setPreferredSize(new Dimension(30, 30));
-        buttonScore.setPreferredSize(new Dimension(30, 30));
-        buttonQuitter.setPreferredSize(new Dimension(30, 30));
-        menu.add(buttonJouer, BorderLayout.NORTH);
-        menu.add(buttonScore, BorderLayout.CENTER);
-        menu.add(buttonQuitter, BorderLayout.SOUTH);
+        JComboBox<String> difficultee = new JComboBox<String>();
+        difficultee.addItem("Facile");
+        difficultee.addItem("Moyen");
+        difficultee.addItem("Difficile");
+       difficultee.setPreferredSize(new Dimension(30,30));
+
+        JButton buttonLancement = new JButton("Lancer la bataille !");
+        buttonLancement.setPreferredSize(new Dimension(200,30));
+
+        JButton retour = new JButton("Retour");
+        retour.setPreferredSize(new Dimension(30,30));
+
+        menu.add(pseudo, BorderLayout.NORTH);
+        menu.add(difficultee, BorderLayout.CENTER);
+        menu.add(buttonLancement, BorderLayout.EAST);
+        menu.add(retour, BorderLayout.SOUTH);
 
         //this.setContentPane(imageFond);
         this.getContentPane().add(imageFond);
@@ -46,6 +54,5 @@ public class ChoixDifficulte extends Window {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
     }
 }
