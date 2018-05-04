@@ -1,7 +1,10 @@
 package model.game;
 
 import controller.Game;
+import model.game.ship.Ship;
 import view.textures.Texture;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Field {
 
@@ -36,13 +39,26 @@ public class Field {
             this.boardPieces[x][y] = piece;
     }
 
-    public void build(int x, int y, Ship ship) {
+    public boolean build(int x, int y, Ship ship) {
         int width = ship.getWidth();
         int height = ship.getHeight();
         if (this.canBuildShipOnIt(x, y, width, height)) {
             ship.getPieces().forEach(piece -> {
-                this.boardPieces[piece.getX()][piece.getY()] = piece;
+                this.boardPieces[x + piece.getX()][y + piece.getY()] = piece;
             });
+            System.out.println("Bateau construit en x:" + x + " y:" + y);
+            return true;
+        }
+        return false;
+    }
+
+    public void randomBuild(Ship ship) {
+        // On choisit des positions randoms
+        int x = this.getRandomPosition(this.width);
+        int y = this.getRandomPosition(this.height);
+        if (!this.build(x, y, ship)) {
+            // Si on ne peut pas le construire à la position souhaitée, on recommence la manoeuvre
+            this.randomBuild(ship);
         }
     }
 
@@ -51,11 +67,12 @@ public class Field {
     }
 
     private boolean canBuildOnIt(int x, int y) {
-        Piece p = this.hit(x, y);
-        if (!(p instanceof WaterPiece)) {
+        if (x >= this.width || y >= this.height || x < 0 || y < 0) {
             return false;
         }
-        return (x >= 0 && x < this.width) &&  (y >= 0 && y < this.height);
+
+        Piece p = this.hit(x, y);
+        return (p instanceof WaterPiece);
     }
 
     /**
@@ -80,6 +97,10 @@ public class Field {
             }
         }
         return true;
+    }
+
+    private int getRandomPosition(int width) {
+        return ThreadLocalRandom.current().nextInt(0, width + 1);
     }
 
 }

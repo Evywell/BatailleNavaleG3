@@ -9,6 +9,7 @@ public class Window extends JFrame {
     private String title;
 
     public Window(int width, int height, String title) {
+        super();
         this.width = width;
         this.height = height;
         this.title = title;
@@ -24,6 +25,7 @@ public class Window extends JFrame {
         this.setTitle(this.title);
         this.setSize(this.width, this.height);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

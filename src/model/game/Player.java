@@ -1,5 +1,8 @@
 package model.game;
 
+import model.game.ship.BigShip;
+import model.game.ship.Ship;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public abstract class Player {
         // On créer le champs de bataille avec de l'eau
         this.field = new Field(width, height);
         this.ships.forEach(ship -> {
-
+            this.field.randomBuild(ship);
         });
     }
 
@@ -44,23 +47,6 @@ public abstract class Player {
         return this.pseudo;
     }
 
-    private void initializeShips() {
-        // Bateau 2x1
-        Ship shipOne = new Ship(this, 2, 1);
-        // Bateau 3x1
-        Ship shipTwo = new Ship(this, 3, 1);
-        // Bateau 2x2
-        Ship shipThree = new Ship(this, 2, 2);
-        // Bateau 2x3
-        Ship shipFour = new Ship(this, 2, 3);
-        // Bateau 4x2
-        Ship shipFive = new Ship(this, 4, 2);
-
-        this.ships.add(shipOne);
-        this.ships.add(shipTwo);
-        this.ships.add(shipThree);
-        this.ships.add(shipFour);
-        this.ships.add(shipFive);
-    }
+    public abstract void initializeShips();
 
 }
