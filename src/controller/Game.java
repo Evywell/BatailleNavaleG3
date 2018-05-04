@@ -3,10 +3,9 @@ package controller;
 import model.game.*;
 import model.stats.Score;
 import model.stats.Statistiques;
+import view.*;
 import view.BattleField;
-import view.ChoixDifficulte;
 import view.MainMenu;
-import view.Window;
 
 public class Game {
 
@@ -46,9 +45,13 @@ public class Game {
         MainMenu.showWindow();
         */
 
-
+        /*
         Window ChoixDifficulte = new ChoixDifficulte();
         ChoixDifficulte.showWindow();
+        */
+
+        Window go = new Stats();
+        go.showWindow();
 
     }
 }
