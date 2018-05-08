@@ -49,6 +49,7 @@ public class Field {
             System.out.println("Bateau construit en x:" + x + " y:" + y);
             return true;
         }
+        System.out.println("Impossible de créer un bateau avec les positions: " + x + ";" + y);
         return false;
     }
 
@@ -56,6 +57,7 @@ public class Field {
         // On choisit des positions randoms
         int x = this.getRandomPosition(this.width);
         int y = this.getRandomPosition(this.height);
+        System.out.println("X: " + x + " Y:" + y);
         if (!this.build(x, y, ship)) {
             // Si on ne peut pas le construire à la position souhaitée, on recommence la manoeuvre
             this.randomBuild(ship);
@@ -67,10 +69,9 @@ public class Field {
     }
 
     private boolean canBuildOnIt(int x, int y) {
-        if (x >= this.width || y >= this.height || x < 0 || y < 0) {
+        if (x >= this.width - 1 || y >= this.height - 1 || x < 0 || y < 0) {
             return false;
         }
-
         Piece p = this.hit(x, y);
         return (p instanceof WaterPiece);
     }
@@ -89,8 +90,8 @@ public class Field {
             return false;
         }
         // Pour chaque case que va constituer le bateau, on regarde si on peut construire dessus
-        for (int i = 1; i < width + 1; i++) {
-            for (int j = 1; j < height + 1; j++) {
+        for (int i = 1; i <= width; i++) {
+            for (int j = 1; j <= height; j++) {
                 if (this.canBuildOnIt(x + i, y + j) == false) {
                     return false;
                 }

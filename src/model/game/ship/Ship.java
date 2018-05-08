@@ -49,4 +49,6 @@ public class Ship {
         return this.pieces;
     }
 
+    public String getId () { return this.id; }
+
 }

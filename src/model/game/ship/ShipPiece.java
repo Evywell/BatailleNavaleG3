@@ -11,7 +11,7 @@ public class ShipPiece extends FieldPiece {
     
     @Override
     public Ship getParent() {
-        return null;
+        return this.parent;
     }
 
     @Override

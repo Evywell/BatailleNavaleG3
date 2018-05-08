@@ -48,8 +48,27 @@ public class BattleField extends Window {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Texture texture = board[x][y].getTexture();
+                Piece p = board[x][y];
                 panel.add(texture);
-                texture.addMouseListener(new PieceMouseListener(this.controller));
+                texture.addMouseListener(new MouseListener() {
+
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        controller.hit(p);
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {}
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {}
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {}
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {}
+                });
             }
         }
     }
@@ -66,41 +85,6 @@ public class BattleField extends Window {
         this.getContentPane().add(computerPan);
         this.drawPlayerField(playerPan);
         this.drawComputerField(computerPan);
-    }
-
-    private class PieceMouseListener implements MouseListener {
-
-        private controller.BattleField controller;
-
-        public PieceMouseListener (controller.BattleField controller) {
-            this.controller = controller;
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            this.controller.test();
-            System.out.println("CLICKED");
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
     }
 
 }
