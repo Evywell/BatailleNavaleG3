@@ -21,37 +21,8 @@ public class Game {
     public static int HEIGHT_FIELD_DIFFICILE = 20;
 
     public static void main(String[] args) {
-       /* Statistiques stats = new Statistiques();
-
-        Score score = new Score(800);
-        score.setPseudo("Test Persist");
-        score.setTemps("20:00");
-        score.setDifficulte("difficile");
-
-        stats.addScore(score);
-        stats.persistScores();
-
-        Player playerOne = new HumanPlayer("Evywell");
-        Player playerTwo = new ComputerPlayer("Computer");
-        Party party = new Party(playerOne, playerTwo, DIFFICULTE_FACILE);
-        party.setCurrentPlayer(playerOne);
-
-        Window battleField = new BattleField(WIDTH_FIELD_FACILE, HEIGHT_FIELD_FACILE, playerOne.getField(), playerTwo.getField(), new controller.BattleField());
-        battleField.showWindow();
-    }*/
-
-       /*
-        Window MainMenu = new MainMenu();
-        MainMenu.showWindow();
-        */
-
-        /*
-        Window ChoixDifficulte = new ChoixDifficulte();
-        ChoixDifficulte.showWindow();
-        */
-
-        Window go = new Stats();
-        go.showWindow();
-
+        Statistiques stats = new Statistiques();
+        Window mainMenu = new MainMenu();
+        mainMenu.showWindow();
     }
 }
