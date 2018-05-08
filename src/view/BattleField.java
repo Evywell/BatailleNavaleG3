@@ -47,14 +47,15 @@ public class BattleField extends Window {
         Piece[][] board = this.computerField.getPieces();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
+                int posX = x;
+                int posY = y;
                 Texture texture = board[x][y].getTexture();
-                Piece p = board[x][y];
                 panel.add(texture);
                 texture.addMouseListener(new MouseListener() {
 
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        controller.hit(p);
+                        controller.hit(posX, posY);
                     }
 
                     @Override

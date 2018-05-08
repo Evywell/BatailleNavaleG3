@@ -2,6 +2,7 @@ package controller;
 
 import model.game.ComputerPlayer;
 import model.game.HumanPlayer;
+import model.game.Party;
 import model.game.Player;
 import view.BattleField;
 import view.Window;
@@ -20,11 +21,10 @@ public class ChoixDifficulte {
 
         Player player = new HumanPlayer(pseudo);
         Player computer = new ComputerPlayer("Computer 1");
+        Party party = new Party(player, computer, difficulte);
+        // party.start();
 
-        player.createField(width, height);
-        computer.createField(width, height);
-
-        Window battleField = new BattleField(width, height, player.getField(), computer.getField(), new controller.BattleField(difficulte, player, computer));
+        Window battleField = new BattleField(width, height, player.getField(), computer.getField(), new controller.BattleField(party));
         battleField.showWindow();
 
         // On ferme la view de sélection de la difficultée

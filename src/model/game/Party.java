@@ -15,6 +15,8 @@ public class Party {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.timer = new Timer(difficulte);
+        this.timer.start();
+        this.setCurrentPlayer(playerOne);
         if (difficulte == Game.DIFFICULTE_FACILE) {
             this.playerOne.createField(Game.WIDTH_FIELD_FACILE, Game.HEIGHT_FIELD_FACILE);
             this.playerTwo.createField(Game.WIDTH_FIELD_FACILE, Game.HEIGHT_FIELD_FACILE);
@@ -34,6 +36,8 @@ public class Party {
     public void setCurrentPlayer(Player player) {
         this.currentPlayer = player;
     }
+
+    public Player getCurrentPlayer () { return this.currentPlayer; }
 
     public void gameOver() {
         this.over = true;

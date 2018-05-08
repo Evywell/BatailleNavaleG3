@@ -51,4 +51,6 @@ public class Ship {
 
     public String getId () { return this.id; }
 
+    public Player getPlayer () { return this.player; }
+
 }
