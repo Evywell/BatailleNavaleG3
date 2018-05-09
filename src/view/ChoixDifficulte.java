@@ -5,13 +5,23 @@ package view;
         import javax.imageio.ImageIO;
         import javax.swing.*;
         import java.awt.*;
+        import java.awt.event.ActionEvent;
+        import java.awt.event.ActionListener;
         import java.io.File;
         import java.io.IOException;
 
 public class ChoixDifficulte extends Window {
 
+    private controller.ChoixDifficulte controller;
+
+    private int difficulte;
+
     public ChoixDifficulte() {
         super("Choix difficulté");
+
+        this.controller = new controller.ChoixDifficulte(this);
+        // On met la difficulté par défaut
+        this.difficulte = Game.DIFFICULTE_FACILE;
 
         this.setLayout(new BorderLayout());
         JPanel menu = new JPanel();
@@ -27,13 +37,41 @@ public class ChoixDifficulte extends Window {
         difficultee.addItem("Facile");
         difficultee.addItem("Moyen");
         difficultee.addItem("Difficile");
-       difficultee.setPreferredSize(new Dimension(30,30));
+        difficultee.setPreferredSize(new Dimension(30,30));
+
+        difficultee.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String choix = difficultee.getItemAt(difficultee.getSelectedIndex()).toLowerCase();
+                if (choix == "facile") {
+                    difficulte = Game.DIFFICULTE_FACILE;
+                } else if (choix == "moyen") {
+                    difficulte = Game.DIFFICULTE_NORMALE;
+                } else if (choix == "difficile") {
+                    difficulte = Game.HEIGHT_FIELD_DIFFICILE;
+                }
+            }
+        });
 
         JButton buttonLancement = new JButton("Lancer la bataille !");
         buttonLancement.setPreferredSize(new Dimension(200,30));
 
+        buttonLancement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.startGame(difficulte, pseudo.getText());
+            }
+        });
+
         JButton retour = new JButton("Retour");
         retour.setPreferredSize(new Dimension(30,30));
+
+        retour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.back();
+            }
+        });
 
         menu.add(pseudo, BorderLayout.NORTH);
         menu.add(difficultee, BorderLayout.CENTER);

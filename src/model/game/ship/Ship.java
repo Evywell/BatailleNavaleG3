@@ -49,4 +49,8 @@ public class Ship {
         return this.pieces;
     }
 
+    public String getId () { return this.id; }
+
+    public Player getPlayer () { return this.player; }
+
 }
