@@ -1,18 +1,25 @@
 package view;
 
 import controller.Game;
+import controller.MainMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameOver extends Window {
 
-    public GameOver() {
+	private MainMenu controller;
+	
+	public GameOver() {
         super("Game Over");
-
+        
+        controller.MainMenu bController = new controller.MainMenu(null);
+        
         this.setLayout(new BorderLayout());
         JPanel gameOver = new JPanel();
         JPanel imageFond = new GameOverPanel();
@@ -22,6 +29,14 @@ public class GameOver extends Window {
 
         JButton buttonRetour = new JButton("Retour au Menu Principal");
         buttonRetour.setPreferredSize(new Dimension(30, 30));
+        
+        buttonRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bController.launchGameView();
+            }
+        });
+        
         gameOver.add(buttonRetour, BorderLayout.CENTER);
 
         this.getContentPane().add(imageFond);
@@ -40,5 +55,4 @@ public class GameOver extends Window {
                 e.printStackTrace();
             }
         }
-    }
-
+}

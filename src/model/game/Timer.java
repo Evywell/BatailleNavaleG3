@@ -9,7 +9,7 @@ public class Timer extends Thread {
 
     public Timer(int difficulte, Party party) {
         if (difficulte == Game.DIFFICULTE_FACILE) {
-            this.time = 10;
+            this.time = 300;
         } else if (difficulte == Game.DIFFICULTE_NORMALE) {
             this.time = 200;
         } else {
