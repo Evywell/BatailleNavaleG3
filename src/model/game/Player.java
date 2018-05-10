@@ -35,6 +35,8 @@ public abstract class Player {
         return this.opponent;
     }
 
+    public void setOpponent(Player opponent) { this.opponent = opponent; }
+
     public Field getOpponentField() {
         return this.opponent.getField();
     }
