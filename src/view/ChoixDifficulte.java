@@ -1,14 +1,14 @@
 package view;
 
-        import controller.Game;
+import controller.Game;
 
-        import javax.imageio.ImageIO;
-        import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
-        import java.awt.event.ActionListener;
-        import java.io.File;
-        import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class ChoixDifficulte extends Window {
 
