@@ -1,14 +1,14 @@
 package view;
 
-        import controller.Game;
+import controller.Game;
 
-        import javax.imageio.ImageIO;
-        import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
-        import java.awt.event.ActionListener;
-        import java.io.File;
-        import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class ChoixDifficulte extends Window {
 
@@ -43,12 +43,12 @@ public class ChoixDifficulte extends Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String choix = difficultee.getItemAt(difficultee.getSelectedIndex()).toLowerCase();
-                if (choix == "facile") {
-                    difficulte = Game.DIFFICULTE_FACILE;
-                } else if (choix == "moyen") {
-                    difficulte = Game.DIFFICULTE_NORMALE;
-                } else if (choix == "difficile") {
-                    difficulte = Game.HEIGHT_FIELD_DIFFICILE;
+                if (choix.equals("facile")) {
+                    changerDifficulte(Game.DIFFICULTE_FACILE);
+                } else if (choix.equals("moyen")) {
+                    changerDifficulte(Game.DIFFICULTE_NORMALE);
+                } else if (choix.equals("difficile")) {
+                    changerDifficulte(Game.DIFFICULTE_DIFFICILE);
                 }
             }
         });
@@ -92,5 +92,9 @@ public class ChoixDifficulte extends Window {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void changerDifficulte(int difficulte) {
+        this.difficulte = difficulte;
     }
 }

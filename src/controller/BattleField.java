@@ -14,6 +14,7 @@ public class BattleField {
     private view.BattleField view;
 
     public BattleField (Player player, Player computer, int difficulte) {
+        System.out.println("DIFFICULTE " + difficulte);
         this.player = player;
         this.computer = computer;
         this.difficulte = difficulte;
