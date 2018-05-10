@@ -2,6 +2,7 @@ package view;
 
 import model.game.ComputerPlayer;
 import model.game.Field;
+import model.game.Party;
 import model.game.Piece;
 import view.textures.Texture;
 
@@ -31,6 +32,10 @@ public class BattleField extends Window {
         this.computerField = computerField;
         this.controller = controller;
         this.drawFields();
+    }
+
+    public synchronized void updateTimer(int time) {
+        this.setTitle("BattleField: " + time);
     }
 
     private void drawPlayerField(JPanel panel) {
