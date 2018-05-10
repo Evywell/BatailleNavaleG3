@@ -10,6 +10,7 @@ public class Party implements Runnable {
     private Timer timer;
     private Player currentPlayer;
     private boolean over;
+    private int difficulte;
 
     private BattleField controller;
 
@@ -20,6 +21,7 @@ public class Party implements Runnable {
         this.timer = new Timer(difficulte, this);
         this.timer.start();
         this.controller = controller;
+        this.difficulte = difficulte;
         this.setCurrentPlayer(playerOne);
         if (difficulte == Game.DIFFICULTE_FACILE) {
             this.playerOne.createField(Game.WIDTH_FIELD_FACILE, Game.HEIGHT_FIELD_FACILE);
@@ -57,7 +59,7 @@ public class Party implements Runnable {
             // C'est au tour de l'ordinateur
             if (this.getCurrentPlayer() instanceof ComputerPlayer) {
                 System.out.println("L'ordinateur joue");
-                ((ComputerPlayer) this.getCurrentPlayer()).choixOrdinateur();
+                ((ComputerPlayer) this.getCurrentPlayer()).choixOrdinateur(difficulte);
                 this.setCurrentPlayer(this.getNextPlayer());
             }
         }

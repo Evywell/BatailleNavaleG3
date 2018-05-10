@@ -34,7 +34,6 @@ public class BattleField {
         Piece piece = player.hit(x, y);
         // plouf
         if (piece instanceof WaterPiece) {
-            this.party.gameOver();
             System.out.println("PLOUF !");
         // Bonus ?
         } else if (piece instanceof BonusPiece) {
