@@ -2,6 +2,7 @@ package model.game;
 
 import model.game.ship.BigShip;
 import model.game.ship.HiddenShip;
+import model.game.ship.ShipPiece;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -29,7 +30,10 @@ public class ComputerPlayer extends Player {
         int x = ThreadLocalRandom.current().nextInt(0, width);
         int y = ThreadLocalRandom.current().nextInt(0, height);
 
-        hit(x, y);
+        Piece p = this.hit(x, y);
+        if (p instanceof ShipPiece) {
+            ((ShipPiece) p).destoye();
+        }
     }
 
 }

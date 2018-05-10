@@ -31,4 +31,9 @@ public abstract class FieldPiece implements Piece {
 
     public int getY() { return this.y; }
 
+    public void destoye() {
+        this.texture = new Texture("water.png");
+        this.hit = true;
+    }
+
 }
