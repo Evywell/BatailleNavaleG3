@@ -10,9 +10,9 @@ import view.MainMenu;
 public class Game {
 
     public static String ASSETS_PATH = "resources/assets";
-    public static int DIFFICULTE_FACILE = 0;
-    public static int DIFFICULTE_NORMALE = 1;
-    public static int DIFFICULTE_DIFFICILE = 2;
+    public static int DIFFICULTE_FACILE = 1;
+    public static int DIFFICULTE_NORMALE = 2;
+    public static int DIFFICULTE_DIFFICILE = 3;
     public static int WIDTH_FIELD_FACILE = 10;
     public static int HEIGHT_FIELD_FACILE = 10;
     public static int WIDTH_FIELD_NORMALE = 20;
